@@ -12,11 +12,11 @@
 
 ## Game resources
 * [Game & Season Materials](https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system)
- * [FRC Game Season Manual](https://firstfrc.blob.core.windows.net/frc2019/Manual/2019FRCGameSeasonManual.pdf)
- * [Kit of Parts (KoP)](https://www.firstinspires.org/robotics/frc/kit-of-parts)
- * [Playing Field Details](https://www.firstinspires.org/robotics/frc/playing-field)
- * [Kickoff Videos](https://www.youtube.com/playlist?list=PLZT9pIgNOV6bbr6hfD2K0WZgvQT_B6JVX)
- * [Screensteps Documentation for 2018 Control System](http://wpilib.screenstepslive.com/s/4485)
+  * [FRC Game Season Manual](https://firstfrc.blob.core.windows.net/frc2019/Manual/2019FRCGameSeasonManual.pdf)
+  * [Kit of Parts (KoP)](https://www.firstinspires.org/robotics/frc/kit-of-parts)
+  * [Playing Field Details](https://www.firstinspires.org/robotics/frc/playing-field)
+  * [Kickoff Videos](https://www.youtube.com/playlist?list=PLZT9pIgNOV6bbr6hfD2K0WZgvQT_B6JVX)
+  * [Screensteps Documentation for 2018 Control System](http://wpilib.screenstepslive.com/s/4485)
 
 
 ## Technical resources
