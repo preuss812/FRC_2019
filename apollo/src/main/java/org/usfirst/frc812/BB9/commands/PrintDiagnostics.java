@@ -24,19 +24,10 @@ public class PrintDiagnostics extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double IMUrate = Robot.imu.getQuaternionX();
-		double IMUyaw = Robot.imu.getMagX();
-		double IMUroll = Robot.imu.getAngleX();
-		double IMUpitch = Robot.imu.getAccelX();
-
-		System.out.println("  IMU rate =" +IMUrate);
-		System.out.println("  Yaw =" +IMUyaw);
-		System.out.println("  Roll =" +IMUroll);	
-		System.out.println("  Pitch =" +IMUpitch);
-		
+ 
         Robot.controlBoxSubsystem.printBits();
         
-        System.out.println("Sensor Position = " + RobotMap.armMotor.getSelectedSensorPosition(0));
+//        System.out.println("Sensor Position = " + RobotMap.armMotor.getSelectedSensorPosition(0));
 
         done = true;
     }

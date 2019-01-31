@@ -14,19 +14,7 @@ public class AutonomousOpenArms extends Command {
         
     }
     protected void execute() {
-		if( Robot.gameData.length() > 0 && 
-				! Robot.controlBoxSubsystem.isSet(6)) {
-				
-			System.out.println("AutonomousOpenArms:gameData is present and isSet(6) is FALSE, gameData = >" + Robot.gameData + "<");
-				
-			if( Robot.gameData.charAt(0) == 'L' && 
-				Robot.controlBoxSubsystem.isSet(5) )    // switch 5 set == left side of field
-					Robot.pickerSubsystem.open();;      // Open the arms to drop the payload
-				
-			if( Robot.gameData.charAt(0) == 'R' &&
-				! Robot.controlBoxSubsystem.isSet(5) )  // switch 5 NOT set == right side of field
-					Robot.pickerSubsystem.open();
-		}
+		
 		end();
     }
 

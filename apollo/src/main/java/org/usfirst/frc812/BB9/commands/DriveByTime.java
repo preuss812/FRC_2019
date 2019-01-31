@@ -30,7 +30,7 @@ public class DriveByTime extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 //    	System.out.println("DriveByTime:execute " + Y_Speed + " " + X_Speed);
-    	RobotMap.dtMecanumDrive.driveCartesian(Y_Speed, X_Speed, Rotation);
+		RobotMap.dtProductionRobotDrive.curvatureDrive(Y_Speed, Y_Speed, false);
   //  	RobotMap.dtMecanumDrive.driveCartesian(ySpeed, xSpeed, zRotation);
     	//RobotMap.dtProductionRobotDrive.curvatureDrive(Speed, Direction,true);
     }
@@ -42,7 +42,7 @@ public class DriveByTime extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.dtMecanumDrive.stopMotor();
+    	RobotMap.dtProductionRobotDrive.stopMotor();
     }
 
     // Called when another command which requires one or more of the same

@@ -15,11 +15,11 @@ public class OpenCloseArm extends CommandGroup {
 	}
 		
 	public void cancel() {
-		Robot.pickerSubsystem.close();
+//		Robot.pickerSubsystem.close();
 		started = false;
 	}
 	public void start() {
-		Robot.pickerSubsystem.open();
+//		Robot.pickerSubsystem.open();
 		started = true;
 	}
 }

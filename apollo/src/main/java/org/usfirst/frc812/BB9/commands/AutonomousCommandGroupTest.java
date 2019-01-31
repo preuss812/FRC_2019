@@ -53,7 +53,6 @@ public class AutonomousCommandGroupTest extends CommandGroup {
 				addSequential(new DriveByTime( 0.0,  0.0, 0.5,  0.80));// rotate right 90 degrees
 				addSequential(new DriveByTime( 0.0,  0.3,  0.0,  1.0));//(Y, X, time) drives five feet forward
 					
-				addSequential(new WinchByTime(1.0, 7.85));      // winch in to open the arm (power, time in seconds)
 		//			addParallel(new MoveArmByTime(-0.30,3.0));    // keep the arm up, fight gravity
 				addSequential(new MoveArmByTime(0.20, 0.75));  // Move Arm Down into drop position
 				addSequential(new AutonomousOpenArms());
@@ -69,7 +68,6 @@ public class AutonomousCommandGroupTest extends CommandGroup {
 					//      o
 				System.out.println("Autonomous mode = Center");
 				addSequential(new DriveByTime(0.0, 0.3, 0.0, 3.5));// drives ten feet forward
-				addSequential(new WinchByTime(1.0, 7.85));      // winch in to open the arm (power, time in seconds)
 				addSequential(new MoveArmByTime(0.20, 0.75));  // Move Arm Down into drop position
 				addSequential(new AutonomousOpenArms());
 				addSequential(new MoveArmByTime(-0.3, 0.75));  // keep the arm off the switch
@@ -86,7 +84,6 @@ public class AutonomousCommandGroupTest extends CommandGroup {
 				addSequential(new DriveByTime( 0.0,  0.0, -0.5,  0.80));// rotate left 90 degrees
 				addSequential(new DriveByTime( 0.0,  0.3,  0.0,  1.0));//(Y, X, time) drives forward
 					
-				addSequential(new WinchByTime(1.0, 7.85));      // winch in to open the arm (power, time in seconds)
 				addSequential(new MoveArmByTime(0.20, 0.75));  // Move Arm Down into drop position
 				addSequential(new AutonomousOpenArms());
 				addSequential(new MoveArmByTime(-0.3, 0.75));  // keep the arm off the switch
@@ -113,7 +110,6 @@ public class AutonomousCommandGroupTest extends CommandGroup {
 					addSequential(new DriveByTime( 0.0,  0.3,  0.0,  1.80));//(Y, X, time) drives six feet forward
 					addSequential(new DriveByTime( 0.0,  0.0,  0.5,  0.60));// rotate right 90 degrees
 					addSequential(new DriveByTime( 0.0,  0.4,  0.0,  0.30));//(Y, X, rotation, time) drives 13.5 feet forward
-					addSequential(new WinchByTime(1.0, 7.85));      // winch in to open the arm (power, time in seconds)
 			//			addParallel(new MoveArmByTime(-0.30,3.0));    // keep the arm up, fight gravity
 					addSequential(new MoveArmByTime(-0.5, 0.70));
 					addSequential(new DriveByTime( 0.0,  0.4,  0.0,  1.0));//(Y, X, rotation, time) drives 13.5 feet forward
@@ -127,7 +123,6 @@ public class AutonomousCommandGroupTest extends CommandGroup {
 					addSequential(new DriveByTime( 0.0,  0.3,  0.0,  1.80));//(Y, X, time) drives six feet forward
 					addSequential(new DriveByTime( 0.0,  0.0, -0.5,  0.70));// rotate left 90 degrees
 					addSequential(new DriveByTime( 0.0,  0.4,  0.0,  0.50));//(Y, X, rotation, time) drives 13.5 feet forward
-					addSequential(new WinchByTime(1.0, 7.85));      // winch in to open the arm (power, time in seconds)
 				//			addParallel(new MoveArmByTime(-0.30,3.0));    // keep the arm up, fight gravity
 					addSequential(new MoveArmByTime(-0.5, 0.70));
 					addSequential(new DriveByTime( 0.0,  0.4,  0.0,  1.0));//(Y, X, rotation, time) drives 13.5 feet forward

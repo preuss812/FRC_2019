@@ -23,7 +23,7 @@ public class MoveArmByTime extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.armMotor.set(Y_Speed);
+    //	RobotMap.armMotor.set(Y_Speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,7 +33,7 @@ public class MoveArmByTime extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.armMotor.set(0.0);
+    //	RobotMap.armMotor.set(0.0);
 		System.out.println("MoveArmByTime end() ySpeed=" + Y_Speed + ", duration=" + Seconds + " seconds");
     }
 

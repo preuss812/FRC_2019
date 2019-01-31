@@ -82,7 +82,7 @@ public class OI {
         ballOutput = new JoystickButton(xboxController, 5);
         hatchToggle = new JoystickButton(rightJoystick, 1);
         
-        
+        printDiagnostics = new JoystickButton(rightJoystick, 10);
         printDiagnostics.whileHeld(new PrintDiagnostics());
         // SmartDashboard Buttons
         SmartDashboard.putData("test drive: STOP", new DriveWithJoysticks());
