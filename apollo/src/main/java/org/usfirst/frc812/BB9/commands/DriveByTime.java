@@ -16,7 +16,7 @@ public class DriveByTime extends Command {
 	 */
 	public DriveByTime(double ySpeed, double xSpeed, double rotation, double seconds) {
 		requires(Robot.driveTrain);
-		Y_Speed=ySpeed;
+		Y_Speed = ySpeed;
 		X_Speed = xSpeed;
 		Rotation = rotation;
 		Seconds = seconds;

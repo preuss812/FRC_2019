@@ -43,15 +43,15 @@ public class DriveTrain extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public void takeJoystickInputs(XboxController xbc) {
+    public void takeJoystickInputs(Joystick js) {
     	
-    	lastX = powerTrim(xbc.getRawAxis(4)); // right xbox joystick X axis (strafe left, right)
-    	lastY = -powerTrim(xbc.getRawAxis(5)); // right xbox joystick Y axis (fwd, back)
-    	lastRotate = powerTrim(xbc.getRawAxis(0)); // left xbox joystick X axis
+    	lastX = powerTrim(js.getRawAxis(0)); // right  joystick X axis == 0 
+    	lastY = -powerTrim(js.getRawAxis(1)); // right  joystick Y axis == 1
+//    	lastRotate = powerTrim(js.getRawAxis(0)); // left xbox joystick X axis
     	
 //    	System.out.println("lastx=" + lastX + " lastY=" + lastY + " lastRotate=" + lastRotate);
-    	robotDrive.curvatureDrive(lastX, lastY, false);
-//    	robotDrive.arcadeDrive(right.getY(), -right.getX(), true);
+    	robotDrive.curvatureDrive(lastY, lastX, false);
+//    	robotDrive.arcadeDrive(right.getY(), right.getX(), true);
     }
 
     public double powerTrim(double value) {
