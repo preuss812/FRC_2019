@@ -17,14 +17,18 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTable;
 
 import org.usfirst.frc812.BB9.commands.AutonomousCommand;
 import org.usfirst.frc812.BB9.subsystems.ControlBoxSubsystem;
 import org.usfirst.frc812.BB9.subsystems.DriveTrain;
-import org.usfirst.frc812.BB9.RobotMap;
+import org.usfirst.frc812.BB9.RobotMap.shifter;
+
+import org.usfirst.frc812.BB9.RobotMap.leftEncoder;
+import org.usfirst.frc812.BB9.RobotMap.rightEncoder;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -140,18 +144,20 @@ public class Robot extends TimedRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
-		double speed;
-
+		private double speed;
+		private boolean isInHighGear;
+		private int shift_control = 0; // move this to a button
+		
 		Scheduler.getInstance().run();
 
-		speed=Math.max(RobotMap.leftEncoder.getRate(), RobotMap.rightEncoder.getRate());
+		speed=Math.max(leftEncoder.getRate(), rightEncoder.getRate());
 
+		
 		boolean shift = false;
-
 		switch(shift_control)
 		{
 			case 0: 
-				if (RobotMap.shifter.get() == Value.kForward )
+				if (shifter.get() == Value.kForward )
 				{
 					shift = speed>shift_down_speed;
 				}
@@ -161,17 +167,17 @@ public class Robot extends TimedRobot {
 				}
 				break;
 			case 1:
-				shift = false; //Value.kForward
+				shift = false;
 				break;
 			case 2:
-				shift = true; //Value.kBackward
+				shift = true; 
 				break;
 		}
-
-		RobotMap.shifter.set(shift); //either true or false based on above logic
-        
+		setGear(shift);
 	}
-		
+
+
+	public voi
 	/**
 	 * This function is called periodically during test mode
 	 */
@@ -187,4 +193,12 @@ public class Robot extends TimedRobot {
 		this.centerX = centerX;
 	}
 
+    public void setGear(boolean gearValue) {
+	shifter.set(gearValue ? Value.kForward : Value.kReverse);
+	isInHighGear = gearValue;
+    }
+
+    public boolean isHighGear() {
+	return isinHighGear;
+    }
 }
