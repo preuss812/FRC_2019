@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 // import edu.wpi.first.wpilibj.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.*;
 
@@ -35,16 +36,14 @@ public class RobotMap {
 	public static WPI_TalonSRX leftFront;
 	public static DoubleSolenoid frontLift;
 	public static DoubleSolenoid backLift;
-	public static WPI_TalonSRX leftIntake;
-	public static WPI_TalonSRX rightIntake;
 	public static DoubleSolenoid hatch;
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid liftArm;
 	public static DifferentialDrive dtProductionRobotDrive;
 	public static Compressor compressor;
 	public static WPI_TalonSRX armUpDown;
-	public static WPI_TalonSRX leftBallMotor;
-	public static WPI_TalonSRX rightBallMotor;
+	public static WPI_TalonSRX leftIntake;
+	public static WPI_TalonSRX rightIntake;
 
 	private static double rampRateSeconds = 2.5;
 	private static double deadBandPercentage = 0.03;
@@ -59,20 +58,25 @@ public class RobotMap {
 		leftRear    = new WPI_TalonSRX(32);
 		rightFront  = new WPI_TalonSRX(33);
 		rightRear   = new WPI_TalonSRX(36);
+		armUpDown   = new WPI_TalonSRX(35);
 		leftIntake  = new WPI_TalonSRX(30);
 		rightIntake = new WPI_TalonSRX(39);
-		armUpDown   = new WPI_TalonSRX(35);
-		leftBallMotor = new WPI_TalonSRX(30);
-		rightBallMotor = new WPI_TalonSRX(39);
 
 		//rightIntake = new WPI_TalonSRX(36);
 		frontLift = new DoubleSolenoid(40, 0, 1); //PCM ID 40, ports 0 and 1
 		backLift  = new DoubleSolenoid(40, 2, 3); 
 		hatch     = new DoubleSolenoid(40, 4, 5);
 		shifter   = new DoubleSolenoid(40, 6, 7);
-//		liftArm     = new DoubleSolenoid(41, 0, 1);
 
-
+		leftFront.setNeutralMode(NeutralMode.Brake);
+		leftRear.setNeutralMode(NeutralMode.Brake);
+		rightFront.setNeutralMode(NeutralMode.Brake);
+		rightRear.setNeutralMode(NeutralMode.Brake);
+		armUpDown.setNeutralMode(NeutralMode.Brake);
+		leftIntake.setNeutralMode(NeutralMode.Brake);
+		rightIntake.setNeutralMode(NeutralMode.Brake);
+		
+		// ----------------- Drive Train Object Setup --------------------
 		// Set ramp rate for some level of control
 		leftFront.configClosedloopRamp(rampRateSeconds, 0);
 		rightRear.configClosedloopRamp(rampRateSeconds, 0);
@@ -80,15 +84,16 @@ public class RobotMap {
 		leftRear.configClosedloopRamp(rampRateSeconds, 0);
 
 		// Set deadband area
-		leftFront.configNeutralDeadband(deadBandPercentage, 0);
-		rightRear.configNeutralDeadband(deadBandPercentage, 0);
-		rightFront.configNeutralDeadband(deadBandPercentage, 0);
-		leftRear.configNeutralDeadband(deadBandPercentage, 0);
+		leftFront.configNeutralDeadband(deadBandPercentage, 5);
+		rightRear.configNeutralDeadband(deadBandPercentage, 5);
+		rightFront.configNeutralDeadband(deadBandPercentage, 5);
+		leftRear.configNeutralDeadband(deadBandPercentage, 5);
 		
 		SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftFront, leftRear);
 		SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightFront, rightRear);
 		
 		dtProductionRobotDrive = new DifferentialDrive(leftMotors, rightMotors);
+// ------------------ End of Drivetrain Object Setup ---------------
 
 		compressor = new Compressor(40);
 		compressor.start();

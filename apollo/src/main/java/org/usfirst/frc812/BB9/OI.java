@@ -113,11 +113,22 @@ public class OI {
         ballIn = new JoystickButton(leftJoystick, 10);
         ballOut = new JoystickButton(leftJoystick, 11);
         ballStop = new JoystickButton(leftJoystick, 9);
+        
+        ballIn.whenPressed(new BallGatherer(1));
+        ballIn.whenReleased(new BallGatherer(0));
 
+        ballOut.whenPressed(new BallGatherer(2));
+        ballOut.whenReleased(new BallGatherer(0));
+        
+        ballStop.whenPressed(new BallGatherer(0));
+        
+        /*
+        //Check with oneill
         ballIn.whenPressed(new BallGatherer(1));
         ballOut.whenPressed(new BallGatherer(2));
         ballStop.whenPressed(new BallGatherer(0));
-        
+        */
+
         printDiagnostics = new JoystickButton(rightJoystick, 10);
         printDiagnostics.whileHeld(new PrintDiagnostics());
         // SmartDashboard Buttons

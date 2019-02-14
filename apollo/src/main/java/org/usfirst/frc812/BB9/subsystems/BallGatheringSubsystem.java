@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class BallGatheringSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  private double speed = 0.5;
 
   @Override
   public void initDefaultCommand() {
@@ -24,16 +25,16 @@ public class BallGatheringSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public void ballIn() {
-    RobotMap.leftBallMotor.set(-0.5);
-    RobotMap.rightBallMotor.set(0.5);
+    RobotMap.leftIntake.set(-speed);
+    RobotMap.rightIntake.set(speed);
   }
   public void ballOut() {
-    RobotMap.leftBallMotor.set(0.5);
-    RobotMap.rightBallMotor.set(-0.5);
+    RobotMap.leftIntake.set(speed);
+    RobotMap.rightIntake.set(-speed);
   }
   public void ballStop() {
     // that's funny, all stop.
-    RobotMap.leftBallMotor.set(0);
-    RobotMap.rightBallMotor.set(0);
+    RobotMap.leftIntake.set(0);
+    RobotMap.rightIntake.set(0);
   }
 }
