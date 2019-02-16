@@ -91,7 +91,7 @@ public class OI {
         ballIntake = new JoystickButton(xboxController, 6);
         ballOutput = new JoystickButton(xboxController, 5);
         hatchToggle = new JoystickButton(rightJoystick, 1);
-
+/*
         lowGear = new JoystickButton(rightJoystick, 4);
         highGear = new JoystickButton(rightJoystick, 5);
         autoGear = new JoystickButton(rightJoystick, 2);
@@ -100,8 +100,7 @@ public class OI {
         autoGear.whenPressed(new ShiftGears(0));
         lowGear.whenPressed(new ShiftGears(1));
         highGear.whenPressed(new ShiftGears(2));
-        quickTurn.whenActive(new QuickTurn());
-
+*/
         armDown = new JoystickButton(leftJoystick, 1);
         armUp = new JoystickButton(leftJoystick, 2);
         armStop = new JoystickButton(leftJoystick, 3);
@@ -121,7 +120,12 @@ public class OI {
         ballOut.whenReleased(new BallGatherer(0));
         
         ballStop.whenPressed(new BallGatherer(0));
-        
+        /*
+        double timeout = Math.max(4.0,
+            Math.abs(Robot.controlBoxSubsystem.getPotValue(0)) * 3.0);
+        Robot.nttable.getEntry("Hatch Pot timeout:").setDouble(timeout);
+        */
+        hatchToggle.whenPressed(new HatchCommand(2.0));
         /*
         //Check with oneill
         ballIn.whenPressed(new BallGatherer(1));

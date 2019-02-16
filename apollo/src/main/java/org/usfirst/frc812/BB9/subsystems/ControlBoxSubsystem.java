@@ -1,8 +1,6 @@
 package org.usfirst.frc812.BB9.subsystems;
 
 import org.usfirst.frc812.BB9.Robot;
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
