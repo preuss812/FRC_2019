@@ -57,6 +57,7 @@ public class OI {
     public Joystick rightJoystick;
  //   public Joystick controlBox;
     public XboxController xboxController;
+    public Button ballStop;
     public Button ballIntake;
     public Button ballOutput;
     public Button hatchToggle;
@@ -69,9 +70,6 @@ public class OI {
     public Button armOut;
     public Button armIn;
     public Button armStop;
-    public Button ballIn;
-    public Button ballOut;
-    public Button ballStop;
     public Button frontUp;
     public Button frontDown;
     public Button backUp;
@@ -96,13 +94,13 @@ public class OI {
         armDown    = new JoystickButton(leftJoystick, 1);
         armUp      = new JoystickButton(leftJoystick, 2);
         armStop    = new JoystickButton(leftJoystick, 3);
-        ballOutput = new JoystickButton(leftJoystick, 5);
-        ballIntake = new JoystickButton(leftJoystick, 6);
         ballStop   = new JoystickButton(leftJoystick, 9);
-        ballIn     = new JoystickButton(leftJoystick, 10);
-        ballOut    = new JoystickButton(leftJoystick, 11);
+        ballIntake = new JoystickButton(leftJoystick, 10);
+        ballOutput = new JoystickButton(leftJoystick, 11);
 
         // Right Joystick assignments
+	// - robot is driven from this stick
+	// - see command/DriveWithJoysticks.java
         hatchToggle = new JoystickButton(rightJoystick, 1);
 
 
@@ -135,11 +133,11 @@ public class OI {
         armUp.whenPressed(new ArmUpDown(2));
         armStop.whenPressed(new ArmUpDown(0));
 
-        ballIn.whenPressed(new BallGatherer(1));
-        ballIn.whenReleased(new BallGatherer(0));
+        ballIntake.whenPressed(new BallGatherer(1));
+        ballIntake.whenReleased(new BallGatherer(0));
 
-        ballOut.whenPressed(new BallGatherer(2));
-        ballOut.whenReleased(new BallGatherer(0));
+        ballOutput.whenPressed(new BallGatherer(2));
+        ballOutput.whenReleased(new BallGatherer(0));
         
         ballStop.whenPressed(new BallGatherer(0));
 
@@ -147,13 +145,6 @@ public class OI {
         Robot.nttable.getEntry("Hatch Pot timeout:").setDouble(timeout);
     
         hatchToggle.whenPressed(new HatchCommand(timeout));
-
-        /*
-        //Check with oneill
-        ballIn.whenPressed(new BallGatherer(1));
-        ballOut.whenPressed(new BallGatherer(2));
-        ballStop.whenPressed(new BallGatherer(0));
-        */
 
         printDiagnostics = new JoystickButton(rightJoystick, 10);
         printDiagnostics.whileHeld(new PrintDiagnostics());
