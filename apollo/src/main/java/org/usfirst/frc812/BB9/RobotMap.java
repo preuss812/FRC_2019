@@ -63,8 +63,8 @@ public class RobotMap {
 		rightIntake = new WPI_TalonSRX(39);
 
 		//rightIntake = new WPI_TalonSRX(36);
-		frontLift = new DoubleSolenoid(40, 0, 1); //PCM ID 40, ports 0 and 1
-		backLift  = new DoubleSolenoid(40, 2, 3); 
+		backLift  = new DoubleSolenoid(40, 0, 1); //PCM ID 40, ports 0 and 1
+		frontLift = new DoubleSolenoid(40, 2, 3); 
 		hatch     = new DoubleSolenoid(40, 4, 5);
 		shifter   = new DoubleSolenoid(40, 6, 7);
 

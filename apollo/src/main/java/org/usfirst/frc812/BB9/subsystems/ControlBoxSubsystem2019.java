@@ -1,26 +1,43 @@
 package org.usfirst.frc812.BB9.subsystems;
-
 import org.usfirst.frc812.BB9.Robot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class ControlBoxSubsystem extends Subsystem {
+public class ControlBoxSubsystem2019 extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	public static final int CB1 = 2;
-	public static final int CB2 = 4;
-	public static final int CB3 = 8;
-	public static final int CB4 = 16;
-	public static final int CB5 = 32;
-	public static final int CB6 = 64;
-	public static final int CB7 = 128;
+	private static final int CB1 = 2;
+	private static final int CB2 = 4;
+	private static final int CB3 = 8;
+	private static final int CB4 = 16;
+	private static final int CB5 = 32;
+	private static final int CB6 = 64;
+	private static final int CB7 = 128;
 
-	public int flagBits = 0;
-		
+	private static int flagBits = 0;
+
+	private static Joystick controlBox;
+
+	private static ControlBoxSubsystem2019 mInstance;
+
+	public synchronized static ControlBoxSubsystem2019 getInstance() {
+		if (mInstance == null) {
+			mInstance = new ControlBoxSubsystem2019();
+			Robot.nttable.getEntry("Controlbox-instance:").setString("created");
+		}
+		return mInstance;
+	}
+	
+	private ControlBoxSubsystem2019() {
+		controlBox = new Joystick(3);
+		Robot.nttable.getEntry("Controlbox-joystick:").setString("initialized");
+	}
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -30,13 +47,12 @@ public class ControlBoxSubsystem extends Subsystem {
     // a corresponding single bit in the integer variable flagBits
     // using bit shifts; e.g., << operator
     public void readBits() {
- /*   	flagBits = 0;
+    	flagBits = 0;
     	for (int i = 1; i<=7; i++) {
-    		if(Robot.oi.controlBox.getRawButton(i)) {
+    		if(controlBox.getRawButton(i)) {
     			flagBits |= 1 << i;
     		}
-		}
-		*/
+    	}
     }
     
     // Creates a mask by bit shifting to the flag number
@@ -96,8 +112,22 @@ public class ControlBoxSubsystem extends Subsystem {
     }
        
     public double getPotValue(int axis) {
- //   	return Robot.oi.controlBox.getRawAxis(axis);
-		return 1.0;
-    }
+    	return controlBox.getRawAxis(axis);
+	}
+	
+	public double getPotValueScaled(int axis, double to_min, double to_max) {
+		double from_min = -1.0;
+	 	double from_max = 1.0;
+		double x;
+		double scaled_x = 0.0;
+		if( to_max > to_min  && from_max > from_min )
+		{
+			x =  controlBox.getRawAxis(axis);
+			scaled_x = ((x - from_min) * (to_max - to_min)) / 
+						(from_max - from_min) +
+						to_min;
+		}
+		return scaled_x;
+	}
 }
 
