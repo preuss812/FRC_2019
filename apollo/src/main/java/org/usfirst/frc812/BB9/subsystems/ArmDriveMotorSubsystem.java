@@ -7,6 +7,7 @@
 
 package org.usfirst.frc812.BB9.subsystems;
 
+import org.usfirst.frc812.BB9.Robot;
 import org.usfirst.frc812.BB9.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -24,10 +25,13 @@ public class ArmDriveMotorSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public void armDown() {
-    RobotMap.armUpDown.set(0.4);
+    double motorSpeed = Robot.controlBoxSubsystem.getPotValueScaled(1, 0.0, 1.0);
+    Robot.nttable.getEntry("Control Box arm speed").setDouble(motorSpeed);
+    RobotMap.armUpDown.set(motorSpeed);
   }
   public void armUp() {
-    RobotMap.armUpDown.set(-0.4);
+    double motorSpeed = Robot.controlBoxSubsystem.getPotValueScaled(1, 0.0, 1.0);
+    RobotMap.armUpDown.set(- motorSpeed);
   }
   public void armStop() {
     RobotMap.armUpDown.set(0);

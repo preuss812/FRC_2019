@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 
 		NetworkTableInstance ntinst = NetworkTableInstance.getDefault();
-		nttable = ntinst.getTable("team812");
+		nttable = ntinst.getTable("0team812");
 
 		RobotMap.init();
 	
@@ -174,6 +174,7 @@ public class Robot extends TimedRobot {
 		nttable.getEntry("Robot-speed:").setNumber(speed);
 
 		controlBoxSubsystem.readBits(); // read the switches on the external control box
+		controlBoxSubsystem.printBits();
 
 		boolean shift = false;
 		nttable.getEntry("Robot-shift_control:").setNumber(shift_control);

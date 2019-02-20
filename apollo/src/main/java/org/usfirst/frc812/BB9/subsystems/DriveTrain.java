@@ -39,7 +39,7 @@ public class DriveTrain extends Subsystem {
 //    	lastY = -powerTrim(js.getRawAxis(1)); // right  joystick Y axis == 1
 		lastX = js.getRawAxis(0); // right  joystick X axis == 0 
 		lastY = -js.getRawAxis(1); // right  joystick Y axis == 1
-    	Robot.nttable.getEntry("Quick turn:").setBoolean(Robot.controlBoxSubsystem.isSet(7));
+    	Robot.nttable.getEntry("Quick turn:").setBoolean(! Robot.controlBoxSubsystem.isSet(7));
     	robotDrive.curvatureDrive(lastY, lastX, ! Robot.controlBoxSubsystem.isSet(7));
     }
 
