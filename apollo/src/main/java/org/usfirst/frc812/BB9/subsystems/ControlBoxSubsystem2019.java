@@ -82,8 +82,8 @@ public class ControlBoxSubsystem2019 extends Subsystem {
 		}	
 		Robot.nttable.getEntry("ControlBox pot 0").setDouble(getPotValue(0));
 		Robot.nttable.getEntry("ControlBox pot 1").setDouble(getPotValue(1));
-		Robot.nttable.getEntry("ControlBox pot 0 scaled 0-5").setDouble(getPotValueScaled(0,0.0,5.0));
-		Robot.nttable.getEntry("ControlBox pot 1 scaled 0-5").setDouble(getPotValueScaled(1, 0.0, 5.0));
+		Robot.nttable.getEntry("ControlBox pot 0 scaled 0.0-5.0").setDouble(getPotValueScaled(0,0.0,5.0));
+		Robot.nttable.getEntry("ControlBox pot 1 scaled 0.5-2.0").setDouble(getPotValueScaled(1, 0.5, 2.0));
 
 		Robot.nttable.getEntry("ControlBox sw left").setString((isSwitchLeft() ? "true":"false"));
 		Robot.nttable.getEntry("ControlBox sw center").setString((isSwitchCenter() ? "true":"false"));

@@ -12,25 +12,20 @@ import org.usfirst.frc812.BB9.Robot;
 /**
  * Add your docs here.
  */
-public class HatchCommand extends Command {
+public class HatchToggleCommand extends Command {
   /**
    * Add your docs here.
    */
-  private double timeout;
 
-  public HatchCommand(double waitTime) {
+  public HatchToggleCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.hatchSubsystem);
-    timeout = waitTime;
-    Robot.nttable.getEntry("Hatch Command timeout:").setDouble(timeout);
-    setTimeout(timeout);
-
   }
 
   // Called just before this Command runs the first time
   protected void initialize() {
-    Robot.hatchSubsystem.open();
+    Robot.hatchSubsystem.toggle();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -38,11 +33,10 @@ public class HatchCommand extends Command {
   }
 
   protected boolean isFinished() {
-    return isTimedOut();
+    return true;
   }
   // Called once after timeout
   protected void end() {
-    Robot.hatchSubsystem.close();
   }
 
   // Called when another command which requires one or more of the same

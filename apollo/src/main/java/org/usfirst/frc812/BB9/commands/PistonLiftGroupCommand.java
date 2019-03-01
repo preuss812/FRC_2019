@@ -9,6 +9,7 @@ package org.usfirst.frc812.BB9.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
+import org.usfirst.frc812.BB9.Robot;
 
 public class PistonLiftGroupCommand extends CommandGroup {
   /**
@@ -36,7 +37,9 @@ public class PistonLiftGroupCommand extends CommandGroup {
         break;
       case 6:
         addSequential(new PistonLiftCommand(0)); // front up
-        addSequential(new WaitCommand(0.10)); // 0.10 == 1/10th of a second
+        addSequential(new WaitCommand(
+          Robot.controlBoxSubsystem.getPotValueScaled(1, 0.500, 2.000)
+        ));
         addSequential(new PistonLiftCommand(2)); // back up
         break;
     }

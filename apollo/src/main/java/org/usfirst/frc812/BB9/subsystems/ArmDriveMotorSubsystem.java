@@ -25,7 +25,9 @@ public class ArmDriveMotorSubsystem extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   public void armDown() {
-    double motorSpeed = Robot.controlBoxSubsystem.getPotValueScaled(1, 0.0, 1.0);
+//    double motorSpeed = Robot.controlBoxSubsystem.getPotValueScaled(1, 0.0, 1.0);
+    double motorSpeed = 1.0; // 2018-03-01 dano/diana - pot used for lift subsystem
+                             // This is now fixed speed, which is okay
     Robot.nttable.getEntry("Control Box arm speed").setDouble(motorSpeed);
     RobotMap.armUpDown.set(motorSpeed);
   }

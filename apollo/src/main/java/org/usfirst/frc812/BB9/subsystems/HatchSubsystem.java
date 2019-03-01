@@ -16,13 +16,28 @@ public class HatchSubsystem extends Subsystem {
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        close();
     }
     public void open(){	
         picker.set(DoubleSolenoid.Value.kForward);
     }
     public void close(){
         picker.set(DoubleSolenoid.Value.kReverse);
+    }
 
+    public void toggle() {
+        DoubleSolenoid.Value state = picker.get();
+
+        switch(state) {
+            case kOff:
+                break;
+            case kForward:
+                close();
+                break;
+            case kReverse:
+                open();
+                break;
+        }
     }
 }
 

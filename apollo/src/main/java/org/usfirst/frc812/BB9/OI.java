@@ -140,11 +140,14 @@ public class OI {
         ballOutput.whenReleased(new BallGatherer(0));
         
         ballStop.whenPressed(new BallGatherer(0));
-    
-        hatchToggle.whenPressed(new HatchCommand(
+ /* 2019-03-01 dano/diana removed code for timed hatch toggle
+ per Hugh's request for a toggle   
+        hatchToggle.whenPressed(new HatchTimedCommand(
             Robot.controlBoxSubsystem.getPotValueScaled(0,0.5, 5.0)
         ));
-
+*/
+        hatchToggle.whenPressed(new HatchToggleCommand());
+        
         // SmartDashboard Buttons
 //        SmartDashboard.putData("test drive: STOP", new DriveWithJoysticks());
 

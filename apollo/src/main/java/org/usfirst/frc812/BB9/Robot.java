@@ -132,22 +132,25 @@ public class Robot extends TimedRobot {
 	}
 
 	public void autonomousInit() {
+		teleopInit();
 		// schedule the autonomous command (example)
-		autonomousCommand = new AutonomousCommand();
+		// autonomousCommand = new AutonomousCommand();
 		
-		runOnce = true;
+		// runOnce = true;
 //		gameData = "RRR";
-		System.out.println("auto init");
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		// System.out.println("auto init");
+		// if (autonomousCommand != null)
+			// autonomousCommand.start();
 	}
 
 	/**
 	 * This function is called periodically during autonomous
 	 */
 	public void autonomousPeriodic() {
+		teleopPeriodic();
 	//	System.out.println("auto running");
-		Scheduler.getInstance().run();
+		// Scheduler.getInstance().run();
+
 		//System.out.println("leftcount is " +LeftCount );
 		//System.out.println("rightcount is " + RightCount );
 	}
