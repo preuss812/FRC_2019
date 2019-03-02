@@ -15,7 +15,12 @@ public class PistonLiftGroupCommand extends CommandGroup {
   /**
    * Add your docs here.
    */
+  private double liftDelay;
+
   public PistonLiftGroupCommand(int action) {
+    liftDelay = Robot.controlBoxSubsystem.getPotValueScaled(1, 0.000, 2.000);
+    Robot.nttable.getEntry("PistonLiftDelay").setDouble(liftDelay);
+    
     switch(action) {
       case 0:
         addSequential(new PistonLiftCommand(0));
@@ -37,9 +42,7 @@ public class PistonLiftGroupCommand extends CommandGroup {
         break;
       case 6:
         addSequential(new PistonLiftCommand(0)); // front up
-        addSequential(new WaitCommand(
-          Robot.controlBoxSubsystem.getPotValueScaled(1, 0.500, 2.000)
-        ));
+        addSequential(new WaitCommand(liftDelay));
         addSequential(new PistonLiftCommand(2)); // back up
         break;
     }
