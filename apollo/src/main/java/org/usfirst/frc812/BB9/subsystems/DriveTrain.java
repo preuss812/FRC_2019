@@ -38,7 +38,11 @@ public class DriveTrain extends Subsystem {
 //    	lastX = powerTrim(js.getRawAxis(0)); // right  joystick X axis == 0 
 //    	lastY = -powerTrim(js.getRawAxis(1)); // right  joystick Y axis == 1
 		lastX = js.getRawAxis(0); // right  joystick X axis == 0 
-		lastY = -js.getRawAxis(1); // right  joystick Y axis == 1
+		// dano 2019-03-07 we changed the value of lastY from negative of the 
+		// joystick input at the request of the driver because they are 
+		// driving backwards most of the time. The prior code was:
+		// lastY = -js.getRawAxis(1);
+		lastY = js.getRawAxis(1); // right  joystick Y axis == 1
     	Robot.nttable.getEntry("Quick turn:").setBoolean(! Robot.controlBoxSubsystem.isSet(7));
     	robotDrive.curvatureDrive(lastY, lastX, ! Robot.controlBoxSubsystem.isSet(7));
     }
